@@ -28,11 +28,11 @@ Functional temporal tensor decomposition leveraging implicit neural representati
 <table align="center">
   <tr>
   <td align="center">
-    <img src="img/gt.gif" width="350"/><br>
+    <img src="img/gt.gif" width="352"/><br>
     <sub>A: Ground Truth</sub>
   </td>
   <td align="center">
-    <img src="img/gif1.gif" width="320"/><br>
+    <img src="img/gif1.gif" width="321"/><br>
     <sub>B: Reconstruction Results with 5% Observation Rate</sub>
   </td>
 </tr>
