@@ -9,7 +9,7 @@ This is authors' official PyTorch implementation for paper:"**Functional Complex
 
 ---
 ## Key Idea
-Functional temporal tensor decomposition leveraging implicit neural representations for the spatial mode and neural ODEs for the temporal mode + automatic functional rank determination (FARD).
+Functional temporal tensor decomposition leveraging implicit neural representations for the spatial mode and neural ODEs for the temporal mode + functional automatic  rank determination (FARD).
 
 
 <!-- <!-- <div align=center> <img src="./figs/FunBat-eq.PNG" width = 100%/> </div> -->
@@ -28,18 +28,19 @@ Functional temporal tensor decomposition leveraging implicit neural representati
 <table align="center">
   <tr>
   <td align="center">
-    <img src="img/gt.gif" width="352"/><br>
+    <img src="img/gt.GIF" width="352"/><br>
     <sub>A: Ground Truth</sub>
   </td>
   <td align="center">
-    <img src="img/gif1.gif" width="321"/><br>
+    <img src="img/gif1.GIF" width="321"/><br>
     <sub>B: Reconstruction Results with 5% Observation Rate</sub>
   </td>
 </tr>
 </table>
 
 
-Through capturing the spatiotemporal continuity property  of the real-world data and employing the FARD mechanism to automatically determine model complexity, ***CATTE achieves accurate and smooth reconstructions from sparse observations—without the need for pre-training on large datasets.***
+Through capturing the spatiotemporal continuity of real-world data and leveraging the FARD mechanism to automatically determine model complexity, ***CATTE achieves accurate and smooth reconstructions (e.g., the counterclockwise vortex in the animation) from sparse observations—without requiring pre-training on large datasets.***
+
 
 ----------------------
 ### Functional Automatic Rank Determination Mechanism:
@@ -52,7 +53,7 @@ Through capturing the spatiotemporal continuity property  of the real-world data
 We showed the predictive trajectories of entry value indexed in different coordinates. The dotted line represents the ground truth and the full line represents the the predic
 tive mean learned by our model. The cross symbols represent the training points. The shaded region  resents the predictive uncertainty region. One can see that although the training points are sparse and noisy, CATTE accurately recovered the ground truth, demonstrating that it has effectively captured the temporal dynamics.
 
-- We then show the learn rank:
+- We then show the learned rank:
 <div align=center> <img src="img/3.png" width = 60%/> </div>
 One can see that CATTE identifies the underlying rank (i.e., 1) through uniquely
 recovering the real mode functions and other four components are learned to be zero. More detailed interpretations on the rank revealing process can be reffered to the preprint.
