@@ -25,17 +25,15 @@ Functional temporal tensor decomposition leveraging implicit neural representati
 <div align=center> <img src="img/image2.png" width = 50%/> </div>
 
 #### Reconstruction Results: 
-
-
 <table align="center">
   <tr>
   <td align="center">
     <img src="img/gt.gif" width="350"/><br>
-    <sub>A:Ground Truth</sub>
+    <sub>A: Ground Truth</sub>
   </td>
   <td align="center">
     <img src="img/gif1.gif" width="320"/><br>
-    <sub>B:Reconstruction Results with 5% Observation Rate</sub>
+    <sub>B: Reconstruction Results with 5% Observation Rate</sub>
   </td>
 </tr>
 </table>
@@ -111,7 +109,7 @@ If you wanna customize your own data to play the model, please follow the notebo
 ## Citing 😸CATTE 
 > 😺 If you find this resource helpful, please consider to star this repository and cite our research:
 ```tex
-@misc{chen2025functionalcomplexityadaptivetemporaltensor,
+@misc{chen2025catte,
       title={Functional Complexity-adaptive Temporal Tensor Decomposition}, 
       author={Panqi Chen and Lei Cheng and Jianlong Li and Weichang Li and Weiqing Liu and Jiang Bian and Shikai Fang},
       year={2025},
