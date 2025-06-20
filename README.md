@@ -1,5 +1,5 @@
-#  CATTE:Functional Complexity-adaptive Temporal Tensor Decomposition
-<div align=center> <img src="img/catte.png" width = 50%/> </div>
+#  😸CATTE:Functional Complexity-adaptive Temporal Tensor Decomposition
+<div align=center> <img src="img/catte.png" width = 40%/> </div>
 (This repo is still on update)
 
 This is authors' official PyTorch implementation for paper:"**Functional Complexity-adaptive Temporal Tensor Decomposition**"[[Arxiv](https://arxiv.org/abs/2502.06164)].
@@ -9,99 +9,56 @@ This is authors' official PyTorch implementation for paper:"**Functional Complex
 
 ---
 ## Key Idea
-Functional temporal tensor decomposition using implicit neural representation (modeling spatial mode) and neural ode (modeling temporal mode) + functional automatic rank determination.
+Functional temporal tensor decomposition leveraging implicit neural representations for the spatial mode and neural ODEs for the temporal mode + automatic functional rank determination (FARD).
 
 
 <!-- <!-- <div align=center> <img src="./figs/FunBat-eq.PNG" width = 100%/> </div> -->
 
 <div align=center> <img src="img/flow.png" width = 100%/> </div>
 
-### Functional Tucker Model (FTM)
-<div align=center> <img src="img/FTM.png" width = 30%/> </div>
-FTM is a general framework that naturally captures the inherent multi-dimensional structure 
-of physical fields and provides compact representations well-suited for sparse or irregular 
-scenarios. 
-
-
-
-
-### Gaussion Process-based Sequential Diffusion  (GPSD)
-<div align=center> <img src="img/TUNET.png" width = 35%/> </div>
-
-GPSD is a variant of diffusion models that uses a Gaussian Process (GP) as the noise source to better capture temporal continuity. Specifically, we design a new architecture called the **Temporally-Augmented U-Net** to serve as the denoiser. 
-
-
-### Message-Passing Diffusion Posterior Sampling (MPDPS)
-<div align=center> <img src="img/MPDPS.png" width = 100%/> </div>
-
-MPDPS **leverages the temporal continuity inherent in physical dynamics and propagates observation-derived guidance across the entire core sequence** using Gaussian Process Regression (GPR). For cores at timesteps with direct observations, this guidance is further refined through messages from neighboring observed timesteps. This smoothing mechanism enhances the robustness of the generated sequence, especially under noisy or extremely sparse observations.
-
 
 ---
 
-## Quick Snapshot of Reconstruction Results on Acttive Matter dataset: 
+## Quick Snapshot of  Results on Sound Speed Field dataset: 
+### Sampling Pattern with 5% Observation Rate:
 
-### Ground Truth:
-<div align=center>
-  <img src="img/gt.gif" , style="max-width: 25%;">
-</div>
+<div align=center> <img src="img/image2.png" width = 50%/> </div>
 
-
-### Sampling Pattern for Observation Setting 1 (Consistently 1% Observation Rate across All Timesteps):
-<div align=center> <img src="img/ob.png" width = 100%/> </div>
-
-
-
-#### Reconstruction Results on Observation Setting 1
-<table>
-<tr>
-  <td align="center">
-    <img src="img/g1.gif" width="160"/><br>
-    <sub>A:SDIFT + MPDPS (clean observation)</sub>
-  </td>
-  <td align="center">
-    <img src="img/g2.gif" width="160"/><br>
-    <sub>B:SDIFT + DPS (clean observation)</sub>
-  </td>
-  <td align="center">
-    <img src="img/g3.gif" width="160"/><br>
-    <sub>C:SDIFT + MPDPS (noisy observation)</sub>
-  </td>
-  <td align="center">
-    <img src="img/g4.gif" width="160"/><br>
-    <sub>D:SDIFT + DPS (noisy observation)</sub>
-  </td>
-</tr>
-</table>
-Animations A and B show SDIFT with MPDPS and DPS reconstructions, respectively, using clean observations.
-Animations C and D present the same reconstructions under severe noise conditions.
-
-- All cases demonstrate the ability to reconstruct the approximate structure of the physical field from highly sparse observations, thanks to the FTM encoder, which significantly reduces the number of unknown variables (i.e., the elements of the core tensor).
-- One can see that our proposed MPDPS ***significantly improves both qualitative and quantitative reconstruction results—the evolution of the physical field is much smoother—and demonstrates strong robustness against noise.***
-
-
-### Sampling Pattern for Observation Setting 2  (1% Observation Rate across Interlaced Timesteps):
-<div align=center> <img src="img/ob2.png" width = 100%/> </div>
-
-
-
-#### Reconstruction Results on Observation Setting 2
+#### Reconstruction Results: 
 
 
 <table align="center">
   <tr>
-    <td align="center">
-      <img src="img/g5.gif", width="160"/><br>
-      A:SDIFT + MPDPS (clean observation)
-    </td>
-    <td align="center">
-      <img src="img/g6.gif", width="160"/><br>
-      B:SDIFT + DPS (clean observation)
-    </td>
-  </tr>
+  <td align="center">
+    <img src="img/gt.gif" width="350"/><br>
+    <sub>A:Ground Truth</sub>
+  </td>
+  <td align="center">
+    <img src="img/gif1.gif" width="320"/><br>
+    <sub>B:Reconstruction Results with 5% Observation Rate</sub>
+  </td>
+</tr>
 </table>
 
-It is obvious that, unlike DPS which generates non-smooth animations, ***MPDPS consistently produces accurate and smooth reconstructions, even at timesteps lacking direct observations***, demostrating the effectivenness of our proposed method.
+
+Through capturing the spatiotemporal continuity property  of the real-world data and employing the FARD mechanism to automatically determine model complexity, ***CATTE achieves accurate and smooth reconstructions from sparse observations—without the need for pre-training on large datasets.***
+
+----------------------
+### Functional Automatic Rank Determination Mechanism:
+
+- We test the FARD on synthetic data. We generated a two-mode temporal tensor (the underlying rank is 1), and each entry is defined as:
+<div align=center> <img src="img/1.png" width = 80%/> </div>
+
+- The reconstruction results are:
+<div align=center> <img src="img/2.png" width = 60%/> </div>
+We showed the predictive trajectories of entry value indexed in different coordinates. The dotted line represents the ground truth and the full line represents the the predic
+tive mean learned by our model. The cross symbols represent the training points. The shaded region  resents the predictive uncertainty region. One can see that although the training points are sparse and noisy, CATTE accurately recovered the ground truth, demonstrating that it has effectively captured the temporal dynamics.
+
+- We then show the learn rank:
+<div align=center> <img src="img/3.png" width = 60%/> </div>
+One can see that CATTE identifies the underlying rank (i.e., 1) through uniquely
+recovering the real mode functions and other four components are learned to be zero. More detailed interpretations on the rank revealing process can be reffered to the preprint.
+
 
 
 ------------------
@@ -115,7 +72,7 @@ The project is mainly built with **pytorch 2.3.0** under **python 3.10**. The de
 
 ## Instructions:
 1. Clone this repository.
-2. To play with the model quickly, we offer several notebooks at `notebook`(on activate matter data)
+<!-- 2. To play with the model quickly, we offer several notebooks at `notebook`(on activate matter data)
 3. The project primarily consists of three `.py` files, **which should be executed in the following order:** 
 
 - **`train_FTM.py`**  
@@ -131,7 +88,7 @@ The project is mainly built with **pytorch 2.3.0** under **python 3.10**. The de
 4. Tune the (hyper)parameters of model in the corresponding `.py` file.
 5. To apply the model on your own dataset, please follow the  `preprocessing_data.py` file to process the raw data into appropriate format.
 6. GPU choice: the models are run on CPU by default, but you can change the device to CPU by modifying the `device` in the correponding file
-
+ -->
 
 <!-- ## Data
 
@@ -151,17 +108,17 @@ If you wanna customize your own data to play the model, please follow the notebo
 
 
 
-## Citing SDIFT
-> 🌟 If you find this resource helpful, please consider to star this repository and cite our research:
+## Citing 😸CATTE 
+> 😺 If you find this resource helpful, please consider to star this repository and cite our research:
 ```tex
-@misc{chen2025SDIFT,
-      title={Generating Full-field Evolution of Physical Dynamics from Irregular Sparse Observations}, 
-      author={Panqi Chen and Yifan Sun and Lei Cheng and Yang Yang and Weichang Li and Yang Liu and Weiqing Liu and Jiang Bian and Shikai Fang},
+@misc{chen2025functionalcomplexityadaptivetemporaltensor,
+      title={Functional Complexity-adaptive Temporal Tensor Decomposition}, 
+      author={Panqi Chen and Lei Cheng and Jianlong Li and Weichang Li and Weiqing Liu and Jiang Bian and Shikai Fang},
       year={2025},
-      eprint={2505.09284},
+      eprint={2502.06164},
       archivePrefix={arXiv},
       primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2505.09284}, 
+      url={https://arxiv.org/abs/2502.06164}, 
 }
 ```
 In case of any questions, bugs, suggestions or improvements, please feel free to open an issue.
