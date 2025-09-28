@@ -2,7 +2,7 @@
 <div align=center> <img src="img/catte.png" width = 40%/> </div>
 (This repo is still on update)
 
-This is authors' official PyTorch implementation for paper:"**Functional Complexity-adaptive Temporal Tensor Decomposition**"[[Arxiv](https://arxiv.org/abs/2502.06164)], accepted by NeurIPS 2025!
+This is authors' official PyTorch implementation for paper:"Functional Complexity-adaptive Temporal Tensor Decomposition"[[Arxiv](https://arxiv.org/abs/2502.06164)], accepted by ***NeurIPS 2025!***
 
 
 
