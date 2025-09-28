@@ -1,0 +1,5 @@
+matplotlib==3.10.6
+numpy==2.3.3
+torch==2.5.1+cu121
+torchdiffeq==0.2.5
+tqdm==4.67.1

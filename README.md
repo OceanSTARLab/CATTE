@@ -2,7 +2,7 @@
 <div align=center> <img src="img/catte.png" width = 40%/> </div>
 (This repo is still on update)
 
-This is authors' official PyTorch implementation for paper:"**Functional Complexity-adaptive Temporal Tensor Decomposition**"[[Arxiv](https://arxiv.org/abs/2502.06164)].
+This is authors' official PyTorch implementation for paper:"**Functional Complexity-adaptive Temporal Tensor Decomposition**"[[Arxiv](https://arxiv.org/abs/2502.06164)], accepted by NeurIPS 2025!
 
 
 
@@ -71,8 +71,9 @@ The project is mainly built with **pytorch 2.3.0** under **python 3.10**. The de
 
 ## Instructions:
 1. Clone this repository.
+2. Run the demo  `demo_main.py`.
 <!-- 2. To play with the model quickly, we offer several notebooks at `notebook`(on activate matter data)
-3. The project primarily consists of three `.py` files, **which should be executed in the following order:** 
+1. The project primarily consists of three `.py` files, **which should be executed in the following order:** 
 
 - **`train_FTM.py`**  
   Trains the Functional Tucker Model using physical data and outputs shared latent functions along with batches of core tensors.
